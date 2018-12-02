@@ -1,4 +1,5 @@
 require 'tdameritrade/util'
+require 'hashie'
 require 'httparty'
 
 module TDAmeritrade
@@ -31,8 +32,13 @@ module TDAmeritrade
         body: params
       )
 
-      update_tokens(Util.parse_json_response(response.body))
+      update_tokens(
+        Hashie.symbolize_keys(
+          Util.parse_json_response(response.body)
+        )
+      )
     end
+    alias :refresh_access_token :get_new_access_token
 
     def update_tokens(args={})
       gem_error(args[:error]) if args.has_key?(:error)
