@@ -66,7 +66,7 @@ module TDAmeritrade
     end
 
     def update_watchlist(account_id, watchlist_id, watchlist_name, symbols_to_add=[])
-      symbols_to_add = symbols_to_add.is_a? String ? [symbols_to_add] : symbols_to_add
+      symbols_to_add = symbols_to_add.is_a?(String) ? [symbols_to_add] : symbols_to_add
       body = {
         "name": watchlist_name,
         "watchlistId": watchlist_id,
