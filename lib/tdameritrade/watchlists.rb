@@ -1,8 +1,10 @@
 require 'tdameritrade/util'
+require 'tdameritrade/util_response'
 require 'httparty'
 
 module TDAmeritrade
   module Watchlists
+    include UtilResponse
 
     def create_watchlist(account_id, watchlist_name, symbols)
       body = {
@@ -22,7 +24,7 @@ module TDAmeritrade
       if response_success?(response)
         true
       else
-        Util.parse_json_response(response.body)
+        Util.parse_json_response(response)
       end
     end
 
@@ -39,7 +41,7 @@ module TDAmeritrade
         )
       end
 
-      Util.parse_json_response(response.body)
+      Util.parse_json_response(response)
     end
 
     def replace_watchlist(account_id, watchlist_id, watchlist_name, new_symbols=[])
@@ -61,7 +63,7 @@ module TDAmeritrade
       if response_success?(response)
         true
       else
-        Util.parse_json_response(response.body)
+        Util.parse_json_response(response)
       end
     end
 
@@ -85,7 +87,7 @@ module TDAmeritrade
       if response_success?(response)
         true
       else
-        Util.parse_json_response(response.body)
+        Util.parse_json_response(response)
       end
     end
 
@@ -105,10 +107,6 @@ module TDAmeritrade
           }
         }
       end
-    end
-
-    def response_success?(response)
-      response.code =~ /^2\d\d/
     end
   end
 end

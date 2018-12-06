@@ -17,7 +17,7 @@ module TDAmeritrade
         query: params
       )
 
-      Util.parse_json_response(response.body)
+      Util.parse_json_response(response)
     end
   end
 end

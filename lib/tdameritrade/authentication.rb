@@ -34,7 +34,7 @@ module TDAmeritrade
 
       update_tokens(
         Hashie.symbolize_keys(
-          Util.parse_json_response(response.body)
+          Util.parse_json_response(response)
         )
       )
     end
