@@ -8,14 +8,14 @@ module TDAmeritrade
                 :access_token_expires_at, :refresh_token_expires_at
 
     def get_access_tokens(authorization_grant_code)
-      # headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
-      # params = {
-      #   'grant_type': 'authorization_code',
-      #   'access_type': 'offline',
-      #   'code': authorization_grant_code,
-      #   'client_id': client_id,
-      #   'redirect_uri': redirect_uri
-      # }
+      headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
+      params = {
+        'grant_type': 'authorization_code',
+        'access_type': 'offline',
+        'code': authorization_grant_code,
+        'client_id': client_id,
+        'redirect_uri': redirect_uri
+      }
     end
 
     def get_new_access_token

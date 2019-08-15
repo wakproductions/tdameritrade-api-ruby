@@ -15,8 +15,8 @@ module TDAmeritrade
     def initialize(**args)
       @access_token = args[:access_token]
       @refresh_token = args[:refresh_token]
-      @client_id = args[:client_id] || ENV['TOS_CLIENT_ID'] || Error.gem_error('client_id is required!')
-      @redirect_uri = args[:redirect_uri] || ENV['TOS_ACCOUNT_ID'] || Error.gem_error('redirect_uri is required!')
+      @client_id = args[:client_id] || Error.gem_error('client_id is required!')
+      @redirect_uri = args[:redirect_uri] || Error.gem_error('redirect_uri is required!')
     end
 
   end
