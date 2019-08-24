@@ -7,6 +7,7 @@ module TDAmeritrade
     attr_reader :client_id, :redirect_uri, :authorization_code, :access_token, :refresh_token,
                 :access_token_expires_at, :refresh_token_expires_at
 
+    # This is the OAuth code retrieved from your browser window, first step in OAuth needed to retrieve the tokens
     def get_access_tokens(authorization_grant_code)
       headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
       params = {
@@ -16,6 +17,10 @@ module TDAmeritrade
         'client_id': client_id,
         'redirect_uri': redirect_uri
       }
+      response = HTTParty.post(
+        'https://api.tdameritrade.com/v1/oauth2/token',
+        body: params
+      )
     end
 
     def get_new_access_token
