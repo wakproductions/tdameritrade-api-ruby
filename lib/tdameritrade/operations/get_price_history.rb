@@ -5,7 +5,6 @@ require 'tdameritrade/operations/base_operation'
 
 module TDAmeritrade; module Operations
   class GetPriceHistory < BaseOperation
-    include Util
 
     # Not used right now, but can be used later on for validation
     FREQUENCY_TYPE=[:minute, :daily, :weekly, :monthly]

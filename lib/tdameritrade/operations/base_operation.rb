@@ -1,7 +1,7 @@
 module TDAmeritrade
   module Operations
     class BaseOperation
-      # Methods for abstracting HTTP requests; dependency injection for client credentials
+      include Util
 
       HTTP_DEBUG_OUTPUT=true # only set this to true for testing
 
@@ -17,7 +17,7 @@ module TDAmeritrade
         HTTP_DEBUG_OUTPUT
       end
 
-      def perform_api_get_request(url: url, query: query)
+      def perform_api_get_request(url: , query: )
         HTTParty.get(
           url,
           headers: { 'Authorization': "Bearer #{client.access_token}" },
