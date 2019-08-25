@@ -2,6 +2,7 @@ require 'tdameritrade/authentication'
 require 'tdameritrade/client'
 require 'tdameritrade/error'
 require 'tdameritrade/instruments'
+require 'tdameritrade/price_history'
 require 'tdameritrade/watchlists'
 require 'tdameritrade/version'
 
@@ -10,6 +11,7 @@ module TDAmeritrade
     include TDAmeritrade::Authentication
     include TDAmeritrade::Error
     include TDAmeritrade::Instruments
+    include TDAmeritrade::PriceHistory
     include TDAmeritrade::Watchlists
 
     def initialize(**args)
