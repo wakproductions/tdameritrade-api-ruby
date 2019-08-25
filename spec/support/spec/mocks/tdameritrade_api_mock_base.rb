@@ -13,5 +13,9 @@ module TDAmeritrade; module Spec; module Mocks
       end
     end
 
+    def self.webmock_off?
+      WebMock.net_connect_allowed?
+    end
+
   end
 end; end; end
