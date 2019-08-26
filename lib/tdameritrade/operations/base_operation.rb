@@ -1,9 +1,12 @@
+require 'tdameritrade/error'
+require 'tdameritrade/util'
+
 module TDAmeritrade
   module Operations
     class BaseOperation
       include Util
 
-      HTTP_DEBUG_OUTPUT=true # only set this to true for testing
+      HTTP_DEBUG_OUTPUT=ENV['DEBUG_OUTPUT'] # to make live testing easier
 
       attr_reader :client
 
@@ -14,15 +17,17 @@ module TDAmeritrade
       private
 
       def debug_output?
-        HTTP_DEBUG_OUTPUT
+        HTTP_DEBUG_OUTPUT.to_s == 'true'
       end
 
-      def perform_api_get_request(url: , query: )
+      def perform_api_get_request(url: , query: nil)
+        options = { headers: { 'Authorization': "Bearer #{client.access_token}" } }
+        options.merge!(query: query) if query
+        options.merge!(debug_output: $stdout) if debug_output?
+
         HTTParty.get(
           url,
-          headers: { 'Authorization': "Bearer #{client.access_token}" },
-          query: query,
-          debug_output: debug_output? ? $stdout : $stderr
+          options
         )
       end
 

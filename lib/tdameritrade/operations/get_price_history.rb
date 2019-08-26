@@ -1,6 +1,3 @@
-require 'httparty'
-require 'tdameritrade/error'
-require 'tdameritrade/util'
 require 'tdameritrade/operations/base_operation'
 
 module TDAmeritrade; module Operations

@@ -1,3 +1,5 @@
+require 'httparty'
+
 require 'tdameritrade/authentication'
 require 'tdameritrade/client'
 require 'tdameritrade/error'

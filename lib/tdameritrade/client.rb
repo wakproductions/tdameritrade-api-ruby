@@ -3,8 +3,10 @@ require 'tdameritrade/client'
 require 'tdameritrade/error'
 require 'tdameritrade/watchlists'
 require 'tdameritrade/version'
+require 'tdameritrade/operations/create_watchlist'
 require 'tdameritrade/operations/get_instrument_fundamentals'
 require 'tdameritrade/operations/get_price_history'
+require 'tdameritrade/operations/get_watchlists'
 
 module TDAmeritrade
   class Client
@@ -25,6 +27,14 @@ module TDAmeritrade
 
     def get_price_history(symbol, **options)
       Operations::GetPriceHistory.new(self).call(symbol, options)
+    end
+
+    def create_watchlist(account_id, watchlist_name, symbols)
+      Operations::CreateWatchlist.new(self).call(account_id, watchlist_name, symbols)
+    end
+
+    def get_watchlists(account_id)
+      Operations::GetWatchlists.new(self).call(account_id: account_id)
     end
 
   end
