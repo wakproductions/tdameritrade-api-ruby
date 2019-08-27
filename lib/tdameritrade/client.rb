@@ -1,18 +1,18 @@
 require 'tdameritrade/authentication'
 require 'tdameritrade/client'
 require 'tdameritrade/error'
-require 'tdameritrade/watchlists'
 require 'tdameritrade/version'
 require 'tdameritrade/operations/create_watchlist'
 require 'tdameritrade/operations/get_instrument_fundamentals'
 require 'tdameritrade/operations/get_price_history'
 require 'tdameritrade/operations/get_watchlists'
+require 'tdameritrade/operations/replace_watchlist'
+require 'tdameritrade/operations/update_watchlist'
 
 module TDAmeritrade
   class Client
     include TDAmeritrade::Authentication
     include TDAmeritrade::Error
-    include TDAmeritrade::Watchlists
 
     def initialize(**args)
       @access_token = args[:access_token]
@@ -35,6 +35,14 @@ module TDAmeritrade
 
     def get_watchlists(account_id)
       Operations::GetWatchlists.new(self).call(account_id: account_id)
+    end
+
+    def replace_watchlist(account_id, watchlist_id, watchlist_name, symbols_to_add=[])
+      Operations::ReplaceWatchlist.new(self).call(account_id, watchlist_id, watchlist_name, symbols_to_add)
+    end
+
+    def update_watchlist(account_id, watchlist_id, watchlist_name, symbols_to_add=[])
+      Operations::UpdateWatchlist.new(self).call(account_id, watchlist_id, watchlist_name, symbols_to_add)
     end
 
   end

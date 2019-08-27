@@ -21,5 +21,23 @@ class MockWatchlists < TDAmeritradeMockBase
       .to_return(response)
   end
 
+  def self.mock_replace(account_id, watchlist_id, request: { headers: {} }, response: { status: 200, body: '' })
+    return if webmock_off?
+
+    WebMock
+      .stub_request(:put, "#{API_BASE_URL}/accounts/#{account_id}/watchlists/#{watchlist_id}")
+      .with(request)
+      .to_return(response)
+  end
+
+  def self.mock_update(account_id, watchlist_id, request: { headers: {} }, response: { status: 200, body: '' })
+    return if webmock_off?
+
+    WebMock
+      .stub_request(:patch, "#{API_BASE_URL}/accounts/#{account_id}/watchlists/#{watchlist_id}")
+      .with(request)
+      .to_return(response)
+  end
+
 end
 end; end; end
