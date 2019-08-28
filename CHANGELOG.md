@@ -1,3 +1,9 @@
+Version 1.0
+- Change structure internally to use dependency injection of operations
+- Price history feature
+- Real time quotes feature
+- Added RSpec test coverage
+
 Version 0.2.alpha 
 - Basic Watchlist retrieval and modification
 
