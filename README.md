@@ -23,7 +23,7 @@ this tutorial](https://www.digitalocean.com/community/tutorials/an-introduction-
 
 I plan on writing more detailed instructions in the file /doc/authentication.md
 
-# Basic Usage
+## Basic Usage
 
 ```
 client = TDAmeritrade::Client.new(
@@ -45,6 +45,27 @@ client.get_instrument_fundamentals('TWTR')
          "pbRatio"=>3.85707,
          ...
 ```
+
+# Current State of Functionality
+
+The official API is documented [here](https://developer.tdameritrade.com/apis). This gem currently implements the
+following functionality. If you would like to expand its functionality, then please submit a pull request.
+
+- [ ] Accounts and Trading
+- [x] Authentication
+- [x] Instruments
+- [ ] Market Hours
+- [ ] Movers
+- [ ] Option Chains
+- [x] Price History
+- [ ] Real-time Quotes
+- [ ] Transaction History
+- [ ] User Info and Preferences
+- [x] Watchlist
+  - [x] Get Watchlists
+  - [x] Replace Watchlist  
+  - [x] Delete Watchlist  
+  - [x] Update Watchlist  
 
 ## Contributions
 

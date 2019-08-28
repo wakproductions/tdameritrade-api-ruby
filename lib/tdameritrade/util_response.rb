@@ -1,3 +1,5 @@
+# TODO kill this file once watchlists.rb converted to operation class
+
 module TDAmeritrade
   module UtilResponse
     module_function
