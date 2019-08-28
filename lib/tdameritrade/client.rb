@@ -5,6 +5,7 @@ require 'tdameritrade/version'
 require 'tdameritrade/operations/create_watchlist'
 require 'tdameritrade/operations/get_instrument_fundamentals'
 require 'tdameritrade/operations/get_price_history'
+require 'tdameritrade/operations/get_quotes'
 require 'tdameritrade/operations/get_watchlists'
 require 'tdameritrade/operations/replace_watchlist'
 require 'tdameritrade/operations/update_watchlist'
@@ -27,6 +28,10 @@ module TDAmeritrade
 
     def get_price_history(symbol, **options)
       Operations::GetPriceHistory.new(self).call(symbol, options)
+    end
+
+    def get_quotes(symbols)
+      Operations::GetQuotes.new(self).call(symbols: symbols)
     end
 
     def create_watchlist(account_id, watchlist_name, symbols)
