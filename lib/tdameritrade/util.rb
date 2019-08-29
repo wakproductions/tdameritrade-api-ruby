@@ -1,5 +1,4 @@
 require 'tdameritrade/error'
-require 'tdameritrade/util_response'
 
 module TDAmeritrade
   module Util
@@ -7,15 +6,17 @@ module TDAmeritrade
 
     def handle_api_error(response)
       # "Individual App's transactions per seconds restriction, please update to commercial apps for unrestricted tps"
-      if response.code == '429'
+      if response.code == 429
         raise TDAmeritrade::Error::RateLimitError.new(response.body)
+      elsif response.code == 401
+        raise TDAmeritrade::Error::NotAuthorizedError.new(response.body)
       end
 
       error_message = JSON.parse(response.body)['error']
       raise TDAmeritrade::Error::TDAmeritradeError.new("#{response.code}: #{error_message}")
     rescue JSON::ParserError
       raise TDAmeritrade::Error::TDAmeritradeError.new(
-        "Unable to parse error response from TD Ameritrade API: #{sanitized_text}"
+        "Unable to parse error response from TD Ameritrade API: #{response.body}"
       )
     end
 
