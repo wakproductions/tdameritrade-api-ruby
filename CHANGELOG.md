@@ -1,3 +1,6 @@
+Verion 1.1.1.20190915
+- Fix incorrect formatting when using startdate and enddate in get_price_history 
+
 Version 1.1.0 8/28/19
 - Enhance error messages for rate limit and invalid token
 
