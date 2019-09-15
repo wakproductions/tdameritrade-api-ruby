@@ -12,7 +12,7 @@ describe TDAmeritrade::Operations::GetPriceHistory do
   context '5 days of 5-min candles' do
     context 'single ticker' do
       subject do
-        client.get_price_history(single_ticker, period_type: :day, frequency: 5, frequency_type: :minute)
+        client.get_price_history(single_ticker, period_type: :day, period: 10, frequency: 5, frequency_type: :minute)
       end
 
       let!(:expected_request) do
@@ -120,6 +120,7 @@ describe TDAmeritrade::Operations::GetPriceHistory do
         client.get_price_history(
           single_ticker,
           period_type: :month,
+          period: 10,
           frequency: 5,
           frequency_type: :minute,
           need_extended_hours_data: true
@@ -153,6 +154,7 @@ describe TDAmeritrade::Operations::GetPriceHistory do
         expect { subject }.to raise_error(TDAmeritrade::Error::TDAmeritradeError, "400: Bad request.")
       end
     end
+
   end
 
 end
