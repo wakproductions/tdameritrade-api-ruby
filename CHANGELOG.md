@@ -1,3 +1,6 @@
+Verion 1.2.0.20190915
+- (Breaking change) Make get_price_history return datetime stamp as Ruby Time vs milliseconds since epoch  
+
 Verion 1.1.1.20190915
 - Fix incorrect formatting when using startdate and enddate in get_price_history 
 
