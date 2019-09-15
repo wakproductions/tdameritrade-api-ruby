@@ -61,8 +61,8 @@ describe TDAmeritrade::Operations::GetPriceHistory do
       let(:expected_result) do
         {
           "candles"=>
-           [{"open"=>119.44, "high"=>119.54, "low"=>119.44, "close"=>119.54, "volume"=>208, "datetime"=>1566558000000},
-            {"open"=>119.54, "high"=>119.54, "low"=>119.54, "close"=>119.54, "volume"=>104, "datetime"=>1566559800000}],
+           [{"open"=>119.44, "high"=>119.54, "low"=>119.44, "close"=>119.54, "volume"=>208, "datetime"=>Time.at(1566558000000 / 1000)},
+            {"open"=>119.54, "high"=>119.54, "low"=>119.54, "close"=>119.54, "volume"=>104, "datetime"=>Time.at(1566559800000 / 1000)}],
           "symbol"=>"PG",
           "empty"=>false
         }
