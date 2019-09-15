@@ -35,7 +35,17 @@ module TDAmeritrade; module Operations
         query: params,
       )
 
-      parse_api_response(response)
+      parsed_response = parse_api_response(response)
+
+      if parsed_response["candles"]
+        parsed_response["candles"].map do |candle|
+          if candle["datetime"].is_a? Numeric
+            candle["datetime"] = Time.at(candle["datetime"] / 1000)
+          end
+        end
+      end
+
+      parsed_response
     end
 
     private
