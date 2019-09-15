@@ -9,7 +9,7 @@ module TDAmeritrade
 
     # This is the OAuth code retrieved from your browser window, first step in OAuth needed to retrieve the tokens
     def get_access_tokens(authorization_grant_code)
-      headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
+      # headers = { 'Content-Type': 'application/x-www-form-urlencoded' } # turns out didn't need this
       params = {
         'grant_type': 'authorization_code',
         'access_type': 'offline',
@@ -21,6 +21,13 @@ module TDAmeritrade
         'https://api.tdameritrade.com/v1/oauth2/token',
         body: params
       )
+
+      if response.status == 200
+        @access_token = response["access_token"]
+        @refresh_token = response["refresh_token"]
+      end
+
+      response
     end
 
     def get_new_access_token
