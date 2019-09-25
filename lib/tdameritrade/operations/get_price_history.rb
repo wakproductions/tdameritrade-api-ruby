@@ -11,18 +11,19 @@ module TDAmeritrade; module Operations
       symbol,
       period_type: nil,
       period: nil,
-      frequency_type: :minute,
-      frequency: 1,
+      frequency_type: nil,
+      frequency: nil,
       end_date: nil, # should be a Date
       start_date: nil, # should be a Date
       need_extended_hours_data: false
     )
       params = {
         apikey: client.client_id,
-        frequencyType: frequency_type,
-        frequency: frequency,
         needExtendedHoursData: need_extended_hours_data,
       }
+
+      params.merge!(frequencyType: frequency_type) if frequency_type
+      params.merge!(frequency: frequency) if frequency
 
       # NOTE: can't use period if using start and end dates
       params.merge!(periodType: period_type) if period_type
