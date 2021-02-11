@@ -4,6 +4,8 @@ require 'httparty'
 
 module TDAmeritrade
   module Authentication
+    include Util
+
     attr_reader :client_id, :redirect_uri, :authorization_code, :access_token, :refresh_token,
                 :access_token_expires_at, :refresh_token_expires_at
 
@@ -22,12 +24,13 @@ module TDAmeritrade
         body: params
       )
 
-      if response.status == 200
-        @access_token = response["access_token"]
-        @refresh_token = response["refresh_token"]
+      unless response_success?(response)
+        raise TDAmeritrade::Error::TDAmeritradeError.new(
+          "Unable to retrieve access tokens from API - #{response.code} - #{response.body}"
+        )
       end
 
-      response
+      update_tokens(parse_json_response(response))
     end
 
     def get_new_access_token
@@ -44,11 +47,7 @@ module TDAmeritrade
         body: params
       )
 
-      update_tokens(
-        Hashie.symbolize_keys(
-          Util.parse_json_response(response)
-        )
-      )
+      update_tokens(parse_json_response(response))
     end
     alias :refresh_access_token :get_new_access_token
 

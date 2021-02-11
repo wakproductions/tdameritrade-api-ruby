@@ -25,7 +25,7 @@ module TDAmeritrade
 
       stripped_text = response.body.strip
       sanitized_text = stripped_text[0] == "\\" ? stripped_text[1..-1] : stripped_text
-      JSON.parse(sanitized_text)
+      Hashie::Mash.new(JSON.parse(sanitized_text))
     rescue JSON::ParserError
       raise TDAmeritrade::Error::TDAmeritradeError.new(
         "Unable to parse response from TD Ameritrade API: #{sanitized_text}"
