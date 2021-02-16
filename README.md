@@ -20,7 +20,6 @@ private app: https://developer.tdameritrade.com/content/simple-auth-local-apps
 The TD Ameritrade API now uses OAuth for authentication. For an introduction to the OAuth flow, [I recommend reading
 this tutorial](https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2).
 
-
 I plan on writing more detailed instructions in the file /doc/authentication.md
 
 ## Basic Usage

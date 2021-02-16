@@ -18,6 +18,8 @@ module TDAmeritrade
     def initialize(**args)
       @access_token = args[:access_token]
       @refresh_token = args[:refresh_token]
+      @access_token_expires_at = args[:access_token_expires_at]
+      @refresh_token_expires_at = args[:refresh_token_expires_at]
       @client_id = args[:client_id] || Error.gem_error('client_id is required!')
       @redirect_uri = args[:redirect_uri] || Error.gem_error('redirect_uri is required!')
     end

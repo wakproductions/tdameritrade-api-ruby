@@ -8,7 +8,7 @@ module TDAmeritrade; module Operations; module Support
           "quantity": 0,
           "averagePrice": 0,
           "commission": 0,
-          "purchasedDate": (Date.today - 3 * 60 * 60 * 24).strftime('%Y-%m-%d'),
+          "purchasedDate": (Date.today).strftime('%Y-%m-%d'),
           "instrument": {
             "symbol": symbol,
             "assetType": "EQUITY"
