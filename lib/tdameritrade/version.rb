@@ -1,3 +1,3 @@
 module TDAmeritrade
-  VERSION = '1.2.1.20190924'
+  VERSION = '1.3.0.20210215'
 end

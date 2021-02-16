@@ -1,3 +1,8 @@
+Version 1.3.0.20210215
+- Added tracking of token expiration dates to instance vars
+- API request results are now returned as a Hashie::Mash to make 'quotes' or :symbol reference of values indifferent
+- Corrected incorrect date submission in create watchlist operation
+
 Verion 1.2.0.20190915
 - (Breaking change) Make get_price_history return datetime stamp as Ruby Time vs milliseconds since epoch  
 
