@@ -8,9 +8,11 @@ Gem::Specification.new do |spec|
   spec.version       = TDAmeritrade::VERSION
   spec.authors       = ["Winston Kotzan"]
   spec.email         = ["wak@wakproductions.com"]
-  spec.summary       = %q{This is a simple gem for connecting to the TD Ameritrade Developers API}
-  spec.description   = ""
-  spec.homepage      = ""
+  spec.summary       = %q{This is a simple gem for connecting to the TD Ameritrade Developers OAuth API}
+  spec.description   = "This is a gem for connecting to the OAuth/JSON-based TD Ameritrade Developers API released " \
+                       "in 2018. Go to https://developer.tdameritrade.com/ for the official documentation and to " \
+                       "create your OAuth application."
+  spec.homepage      = "https://github.com/wakproductions/tdameritrade-api-ruby"
   spec.license       = "MIT"
 
   spec.files         = [`git ls-files`.split($/)] + Dir["lib/**/*"]

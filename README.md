@@ -22,6 +22,9 @@ this tutorial](https://www.digitalocean.com/community/tutorials/an-introduction-
 
 I plan on writing more detailed instructions in the file /doc/authentication.md
 
+See my video [Stonks on Rails Episode #2 - Connecting to TD Ameritrade via OAuth](https://youtu.be/diawswdQhME) for
+a more detailed walkthrough of the OAuth authentication process.
+
 ## Basic Usage
 
 ```

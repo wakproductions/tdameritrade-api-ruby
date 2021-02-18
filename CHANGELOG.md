@@ -13,7 +13,7 @@ Version 1.1.0 8/28/19
 - Enhance error messages for rate limit and invalid token
 
 Version 1.0 8/27/19
-- Change structure internally to use dependency injection of operations
+- Change structure internally to use dependency injection of oprations
 - Price history feature
 - Real time quotes feature
 - Added RSpec test coverage
